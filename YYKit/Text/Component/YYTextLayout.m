@@ -782,10 +782,10 @@ dispatch_semaphore_signal(_lock);
                 for (NSUInteger g = 0; g < glyphCount; g++) {
                     BOOL glyphRotate = 0, glyphRotateMove = NO;
                     CFIndex runStrLen = runStrIdx[g + 1] - runStrIdx[g];
-                    NSLog(@"asdlklklkasldklasd");
-                    if (isColorGlyph) {
-                        glyphRotate = YES;
-                    } else if (runStrLen == 1) {
+//                    if (isColorGlyph) {
+//                        glyphRotate = YES;
+//                    } else
+                    if (runStrLen == 1) {
                         unichar c = [layoutStr characterAtIndex:runStrIdx[g]];
                         glyphRotate = [rotateCharset characterIsMember:c];
                         if (glyphRotate) glyphRotateMove = [rotateMoveCharset characterIsMember:c];
