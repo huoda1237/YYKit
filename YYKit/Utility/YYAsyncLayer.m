@@ -116,6 +116,14 @@ static dispatch_queue_t YYAsyncLayerGetReleaseQueue() {
         return;
     }
     
+    //防止因尺寸小于0导致的崩溃
+    CGSize size = self.bounds.size;
+    if (size.width < 1 || size.height < 1) {
+        CGImageRef image = (__bridge_retained CGImageRef)(self.contents);
+        self.contents = nil;
+        return;
+    }
+    
     if (async) {
         if (task.willDisplay) task.willDisplay(self);
         YYSentinel *sentinel = _sentinel;
